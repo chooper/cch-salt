@@ -10,3 +10,5 @@ base:
     - match: pcre
     - munin
     - cchdotnet
+    - nginx_monitoring
+
