@@ -4,7 +4,9 @@ base:
     - ssh
     - users
     - misc
+    - munin-node
 
   'theobroma.*':
     - match: pcre
+    - munin
     - cchdotnet
