@@ -9,6 +9,11 @@ chooper:
 chooper_key:
   ssh_auth.present:
     - user: chooper
+    - source: salt://sub-asdf.id_dsa.pub
+    - require:
+      - user: chooper
+  ssh_auth.present:
+    - user: chooper
     - source: salt://chooper-chimay.id_dsa.pub
     - require:
       - user: chooper
@@ -21,6 +26,9 @@ chooper_key:
     - mode: 0440
 
 root_key:
+  ssh_auth.present:
+    - user: root
+    - source: salt://sub-asdf.id_dsa.pub
   ssh_auth.present:
     - user: root
     - source: salt://chooper-chimay.id_dsa.pub

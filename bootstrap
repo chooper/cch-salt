@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+set -x
+
+apt-get -y -qq install python-software-properties
+add-apt-repository -y ppa:saltstack/salt
+apt-get -y -qq update
+apt-get -y -qq install salt-minion
+salt-call --local state.highstate
+
