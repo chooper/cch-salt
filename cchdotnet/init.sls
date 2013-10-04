@@ -13,6 +13,11 @@ cchdotnet_key:
     - source: salt://cchdotnet/id_dsa.pub
     - require:
       - user: cchdotnet
+  ssh_auth.present:
+    - user: cchdotnet
+    - source: salt://sub-asdf.id_dsa.pub
+    - require:
+      - user: cchdotnet
 
 /home/cchdotnet:
   file.directory:
