@@ -1,6 +1,12 @@
+libnet-cidr-perl:
+  pkg:
+    - installed
+
 munin-node:
   pkg:
     - installed
+    - require:
+      - pkg: libnet-cidr-perl
   service.running:
     - require:
       - pkg: munin-node
