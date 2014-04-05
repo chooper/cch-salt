@@ -6,17 +6,12 @@ chooper:
     - groups:
       - sudo
 
-chooper_key:
+chooper_keys:
   ssh_auth.present:
     - user: chooper
-    - source: salt://sub-asdf.id_dsa.pub
     - require:
       - user: chooper
-  ssh_auth.present:
-    - user: chooper
-    - source: salt://chooper-chimay.id_dsa.pub
-    - require:
-      - user: chooper
+    - source: salt://keys.pub
 
 /etc/sudoers:
   file.managed:
@@ -25,11 +20,18 @@ chooper_key:
     - group: root
     - mode: 0440
 
-root_key:
+root:
+  user.present:
+  - fullname: root
+  - shell: /bin/bash
+  - home: /root
+  - groups:
+    - sudo
+
+root_keys:
   ssh_auth.present:
     - user: root
-    - source: salt://sub-asdf.id_dsa.pub
-  ssh_auth.present:
-    - user: root
-    - source: salt://chooper-chimay.id_dsa.pub
+    - require:
+      - user: root
+    - source: salt://keys.pub
 
