@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# $1 must be the IP
+
+usage() {
+    echo "Usage: $0 <ip>"
+}
+
+test -z "$1" && { usage ; exit 1 ; }
+
+ip="$1"
+
+rsync -avH . root@$ip:salt
+ssh root@$ip 'cd salt && ./bootstrap'
+
