@@ -11,9 +11,3 @@ base:
     - munin
     - nginx_monitoring
 
-  'lagunitas.*':
-    - match: pcre
-    - munin
-    - cchdotnet
-    - nginx_monitoring
-
