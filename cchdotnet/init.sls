@@ -45,8 +45,7 @@ cchdotnet_key:
   file.directory:
     - user: root
     - group: root
-    - dir_mode: 755
-    - file_mode: 644
+    - mode: 755
     - require:
       - pkg: nginx
 

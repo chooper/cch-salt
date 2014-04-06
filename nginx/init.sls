@@ -14,8 +14,7 @@ nginx:
   file.directory:
     - user: root
     - group: root
-    - dir_mode: 755
-    - file_mode: 644
+    - mode: 755
     - makedirs: True
 
 /etc/nginx/nginx.conf:
@@ -23,7 +22,7 @@ nginx:
     - source: salt://nginx/config/nginx.conf
     - user: root
     - group: root
-    - file_mode: 644
+    - mode: 644
     - require:
       - file: /etc/nginx
 
@@ -35,8 +34,7 @@ nginx:
   file.directory:
     - user: root
     - group: root
-    - dir_mode: 755
-    - file_mode: 644
+    - mode: 755
     - makedirs: True
 
 #/var/www:

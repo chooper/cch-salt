@@ -30,8 +30,7 @@ munin-node-plugins:
   file.directory:
     - user: root
     - group: root
-    - dir_mode: 755
-    - file_mode: 644
+    - mode: 755
     - makedirs: True
 
 /etc/munin/munin-node.conf:
