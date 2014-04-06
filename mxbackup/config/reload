@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+set -x
+
+sudo postmap /etc/postfix/virtual
+sudo postmap /etc/postfix/transport
+sudo postfix reload
+
