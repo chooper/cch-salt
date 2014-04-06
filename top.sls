@@ -11,3 +11,7 @@ base:
     - munin
     - nginx_monitoring
 
+  'mxbackup*':
+    - match: pcre
+    - mxbackup
+
