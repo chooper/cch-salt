@@ -13,5 +13,6 @@ base:
 
   'mxbackup*':
     - match: pcre
+    - postfix_monitoring
     - mxbackup
 
