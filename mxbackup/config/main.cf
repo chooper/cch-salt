@@ -1,24 +1,13 @@
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
 
-
 # Debian specific:  Specifying a file name will cause the first
 # line of that file to be used as the name.  The Debian default
 # is /etc/mailname.
 myorigin = /etc/mailname
-
 smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
 biff = no
 
-# appending .domain is the MUA's job.
-append_dot_mydomain = no
-
-# Uncomment the next line to generate "delayed mail" warnings
-#delay_warning_time = 4h
-
-readme_directory = /usr/share/doc/postfix
-
-
-####
+###
 # Disable local delivery
 mydestination =
 local_recipient_maps =
@@ -35,28 +24,40 @@ smtpd_recipient_restrictions =
     permit_mynetworks,
     reject_unauth_destination
 
+###
+# Smarthost
 # Relay and specify smarthost
 transport_maps = hash:/etc/postfix/transport
 relay_domains = hash:/etc/postfix/transport
-
 #relay_recipient_maps = hash:/etc/postfix/relay_recipients
 show_user_unknown_table_name = no
 
-# Configure TLS
-#smtpd_use_tls = yes
-#smtpd_tls_cert_file = /etc/postfix/smtpd.cert
-#smtpd_tls_key_file = /etc/postfix/smtpd.key
-
 ###
 # Optimize for mx backup services (adjust queue backoffs, etc)
-
 # Retry sending mail very 5 minutes
 queue_run_delay = 300s
 minimal_backoff_time = 300s
 maximal_backoff_time = 300s
 
 ###
+# TLS
+
+# Client
+smtp_tls_loglevel = 1
+smtp_tls_security_level = may
+smtp_tls_note_starttls_offer = yes
+
+# Server
+#smtpd_use_tls = yes
+#smtpd_tls_cert_file = /etc/postfix/smtpd.cert
+#smtpd_tls_key_file = /etc/postfix/smtpd.key
+
+###
 # Misc config
 message_size_limit = 30720000
-
+readme_directory = /usr/share/doc/postfix
 html_directory = /usr/share/doc/postfix/html
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
