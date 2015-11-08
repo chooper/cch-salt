@@ -60,3 +60,25 @@ postfix:
     - require:
       - file: /etc/postfix
 
+/etc/postfix/server.pem:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 600
+    - require:
+      - file: /etc/postfix
+
+/etc/postfix/CAcert.pem:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 664
+    - require:
+      - file: /etc/postfix
+
+/var/spool/postfix/etc/certs:
+  file.directory:
+    - user: root
+    - group: postfix
+    - mode: 664
+    - makedirs: True
