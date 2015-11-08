@@ -49,8 +49,22 @@ smtp_tls_note_starttls_offer = yes
 
 # Server
 #smtpd_use_tls = yes
-#smtpd_tls_cert_file = /etc/postfix/smtpd.cert
-#smtpd_tls_key_file = /etc/postfix/smtpd.key
+smtpd_tls_security_level = may
+smtpd_tls_cert_file = /etc/postfix/server.pem
+smtpd_tls_key_file = $smtpd_tls_cert_file
+
+# To verify a remote SMTP client certificate, the Postfix SMTP server needs to
+# trust the certificates of the issuing Certification Authorities. These
+# certificates in "PEM" format can be stored in a single $smtpd_tls_CAfile or in
+# multiple files, one CA per file in the $smtpd_tls_CApath directory. If you use
+# a directory, don't forget to create the necessary "hash" links with:
+# 	$OPENSSL_HOME/bin/c_rehash /path/to/directory
+# CAfile can be root-owned
+smtpd_tls_CAfile = /etc/postfix/CAcert.pem
+# certs need to be accessible by jailed postfix user
+smtpd_tls_CApath = /var/spool/postfix/etc/certs
+smtpd_tls_loglevel = 1
+smtpd_tls_received_header = yes
 
 ###
 # Misc config
