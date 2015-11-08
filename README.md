@@ -13,9 +13,9 @@ remote$ cd /srv/salt && ./bootstrap
 After provisioning an `mxbackup` host, drop the following two files into
 `/etc/postfix`:
 
-	1. `/etc/postfix/virtual`
+1. `/etc/postfix/virtual`
 
-	1. `/etc/postfix/transport`
+1. `/etc/postfix/transport`
 
 Then run:
 
@@ -39,11 +39,11 @@ sudo service postfix start
 After provisioning an `mxrelay` host, drop the following files into
 `/etc/postfix`:
 
-	1. `/etc/postfix/virtual`
+1. `/etc/postfix/virtual`
 
-	1. `/etc/postfix/relay_from`
+1. `/etc/postfix/relay_from`
 
-	1. `/etc/postfix/relay_from.cidr`
+1. `/etc/postfix/relay_from.cidr`
 
 Then copy `/var/spool/postfix/etc/sasldb2` into place and ensure that it's
 owned by `root:postfix`. You can do this by re-running salt's highstate
