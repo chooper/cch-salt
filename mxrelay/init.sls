@@ -118,7 +118,7 @@ saslauthd:
 /var/spool/postfix/etc/sasldb2:
   file.managed:
     - user: root
-    - group: sasl
+    - group: postfix
     - mode: 660
     - require:
       - pkg: sasl2-bin
