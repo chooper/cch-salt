@@ -16,3 +16,7 @@ base:
     - postfix_monitoring
     - mxbackup
 
+  'mxrelay*':
+    - match: pcre
+    - postfix_monitoring
+    - mxrelay

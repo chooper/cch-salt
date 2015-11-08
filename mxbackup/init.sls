@@ -12,6 +12,13 @@ postfix:
       - file: /etc/postfix/*
 
 # Configuration files for postfix
+/etc/sysctl.conf:
+  file.managed:
+    - source: salt://mxrelay/sysctl.conf
+    - user: root
+    - group: root
+    - mode: 644
+
 /etc/hosts:
   file.managed:
     - source: salt://mxbackup/hosts
