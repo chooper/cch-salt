@@ -5,17 +5,8 @@
 # is /etc/mailname.
 myorigin = /etc/mailname.mxrelay1
 myhostname = obsmtp1.dynall.net
-
 smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
 biff = no
-
-# appending .domain is the MUA's job.
-append_dot_mydomain = no
-
-# Uncomment the next line to generate "delayed mail" warnings
-#delay_warning_time = 4h
-
-readme_directory = /usr/share/doc/postfix
 
 ####
 # Disable local delivery
@@ -38,6 +29,7 @@ smtpd_sasl_local_domain = $myhostname
 broken_sasl_auth_clients = yes
 smtpd_sasl_exceptions_networks = $mynetworks, cidr:/etc/postfix/relay_from.cidr, hash:/etc/postfix/relay_from
 
+###
 # Relay from specific hosts
 smtpd_client_restrictions =
 	permit_mynetworks,
@@ -62,6 +54,20 @@ smtpd_recipient_restrictions =
 
 show_user_unknown_table_name = no
 
+###
+# TLS
+
+# Client
+smtp_tls_loglevel = 1
+smtp_tls_security_level = may
+smtp_tls_note_starttls_offer = yes
+
+###
 # Misc config
 message_size_limit = 536870912
 html_directory = /usr/share/doc/postfix/html
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
+readme_directory = /usr/share/doc/postfix
