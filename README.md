@@ -5,7 +5,7 @@ Provision a new host, and then:
 ```bash
 local$ git clone git@github.com:chooper/cch-salt.git
 local$ rsync -avh cch-salt root@remote-server:/srv/salt
-remote$ /srv/salt/bootstrap
+remote$ cd /srv/salt && ./bootstrap
 ```
 
 ## `mxbackup`
