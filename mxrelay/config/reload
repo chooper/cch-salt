@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+set -x
+
+# Build hashes and reload postfix
+postmap /etc/postfix/virtual
+postmap /etc/postfix/relay_from
+postmap /etc/postfix/relay_from.cidr
+postfix reload
